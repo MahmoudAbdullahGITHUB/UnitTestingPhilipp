@@ -30,7 +30,7 @@ android {
         buildConfigField("String", "API_KEY", "\"${gradleProperties["API_KEY"]}\"")
 //        buildConfigField("String","API_KEY",API_KEY)
 
-        testInstrumentationRunner = "com.example.unittestingphilipp.HiltTestRunner"
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
             useSupportLibrary = true
         }
@@ -149,13 +149,11 @@ dependencies {
     testImplementation(libs.kotlinx.coroutines.test)
     testImplementation(libs.mockito.core)
 
-    // Instrumented Unit Tests (AndroidTest)
+    // Instrumented Unit Tests
     androidTestImplementation(libs.dexmaker.mockito)
     androidTestImplementation(libs.kotlinx.coroutines.test)
     androidTestImplementation(libs.androidx.core.testing)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(libs.mockito.core)
-     androidTestImplementation("com.google.dagger:hilt-android-testing:2.44")
-     kaptAndroidTest("com.google.dagger:hilt-android-compiler:2.44")
 
 }

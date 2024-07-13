@@ -12,22 +12,13 @@ import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 import com.google.common.truth.Truth.assertThat
-import dagger.hilt.android.testing.HiltAndroidRule
-import dagger.hilt.android.testing.HiltAndroidTest
 import org.junit.Rule
-import javax.inject.Inject
-import javax.inject.Named
 
+@RunWith(AndroidJUnit4::class)
 @SmallTest // Unit Test
-@HiltAndroidTest
 class ShoppingDaoTest {
-
-    // this rule for hilt
-    @get:Rule
-    val hiltRule = HiltAndroidRule(this)
-
     /**
-     * for async matters
+     * from async matters
      * TODO
      *  To make sure that each unit test function doesn't run async
      *  but run on the same thread one action after the other
@@ -38,10 +29,7 @@ class ShoppingDaoTest {
     @get:Rule
     val instantTaskExecutorRule = InstantTaskExecutorRule()
 
-    @Inject
-    @Named("test_db")
     private lateinit var database: ShoppingItemDatabase
-
     private lateinit var dao: ShoppingDao
 
 
@@ -51,7 +39,10 @@ class ShoppingDaoTest {
 
     @Before
     fun setup() {
-        hiltRule.inject()
+        database = Room.inMemoryDatabaseBuilder(
+            ApplicationProvider.getApplicationContext(),
+            ShoppingItemDatabase::class.java
+        ).allowMainThreadQueries().build()
 
         dao = database.shoppingDao()
     }

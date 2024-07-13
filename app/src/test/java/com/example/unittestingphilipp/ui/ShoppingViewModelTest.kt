@@ -1,16 +1,17 @@
 package com.example.unittestingphilipp.ui
 
-import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import com.example.unittestingphilipp.MainCoroutineRule
-import com.example.unittestingphilipp.getOrAwaitValueTest
+ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+ import com.example.unittestingphilipp.MainCoroutineRule
+ import com.example.unittestingphilipp.getOrAwaitValueTest
 import com.example.unittestingphilipp.other.Constants
 import com.example.unittestingphilipp.other.Status
 import com.example.unittestingphilipp.repositories.FakeShoppingRepository
 import com.google.common.truth.Truth.assertThat
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import org.junit.Before
+ import kotlinx.coroutines.ExperimentalCoroutinesApi
+ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
+
 
 
 @OptIn(ExperimentalCoroutinesApi::class)
@@ -20,7 +21,7 @@ class ShoppingViewModelTest {
     val instantTaskExecutorRule = InstantTaskExecutorRule()
 
     @get:Rule
-    val mainCoroutineRule = MainCoroutineRule()
+    val mainCoroutineRule  = MainCoroutineRule()
 
     private lateinit var viewModel: ShoppingViewModel
 
